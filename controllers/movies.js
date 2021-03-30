@@ -8,7 +8,8 @@ export default {
     },
     postAdd: function(ctx) {
         const {title, description, imageURL} = ctx.params;
-        create({title, description, imageURL, creator: ctx.user, likes: {}})
+        const [creator, likes] = [sessionStorage.getItem('user'), {}]; 
+        create({title, description, imageURL, creator, likes})
         .then(() => {
             ctx.redirect('#/home');
         })
@@ -18,7 +19,13 @@ export default {
         const id = ctx.params.id;
         auth.setHeader(ctx);
         get(id)
-        .then(res => console.log(res))
+        .then(res => res.data())
+        .then(data => {
+            const currMovie = data;
+            ctx.isCreator = currMovie.creator === sessionStorage.getItem('user');
+            ctx.currMovie = currMovie;
+            ctx.loadPartials(commonPartial).partial('./view/movies/details.hbs');
+        })
         .catch(e => console.log(e));
     }
 }
