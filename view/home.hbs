@@ -6,7 +6,7 @@
     <p class="lead">Unlimited movies, TV shows, and more. Watch anywhere. Cancel anytime.</p>
 </div>
 <h1 class="text-center">Movies</h1>
-
+{{#if isAuth}}
 <section>
     <a href="#/add" class="btn btn-warning ">Add Movie</a>
     <form class="search float-right">
@@ -15,5 +15,24 @@
         <input type="submit" class="btn btn-info" value="Search">
     </form>
 </section>
+
+<div class=" mt-3 ">
+    <div class="row d-flex d-wrap">
+        <div class="card-deck d-flex justify-content-center">
+            {{#each movies}}
+            <div class="card mb-4">
+                <img src={{imageURL}} alt="Card image cap" class="card-img-top" width="400">
+                <div class="card-body">
+                    <h4 class="card-title">{{title}}</h4>
+                </div>
+                <div class="card-footer">
+                    <a href="#/details/:id"><button type="button" class="btn btn-info">Details</button></a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{/if}}
 
 {{> footer}}
