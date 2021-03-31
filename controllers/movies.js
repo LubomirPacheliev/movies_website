@@ -1,4 +1,4 @@
-import { create, get } from '../models/events.js';
+import { create, get, update } from '../models/events.js';
 import auth from './auth.js';
 import common from './common.js';
 import commonPartial from './partials.js';
@@ -41,5 +41,9 @@ export default {
     },
     postEdit: function(ctx) {
         const id = ctx.params.id;
+        const {title, description, imageURL} = ctx.params;
+        update(id, {title, description, imageURL})
+        .then(() => ctx.redirect('#/home'))
+        .catch(e => console.log(e));
     }
 }
