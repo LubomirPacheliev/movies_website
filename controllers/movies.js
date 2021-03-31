@@ -50,5 +50,28 @@ export default {
         close(id)
         .then(() => ctx.redirect('#/home'))
         .catch(e => console.log(e));
+    },
+    getLike: function(ctx) {
+        const id = ctx.params.id;
+        get(id)
+        .then(res => {
+            const movie = res.data();
+            const user = sessionStorage.getItem('user');
+            let liked = false;
+            for (const like of movie.likes) {
+                if (like === user) {
+                    liked = true;
+                    break;
+                }
+            }
+            if (!liked) {
+                movie.likes.push(user);
+                update(id, {likes: movie.likes})
+                .then(() => {
+                    ctx.redirect('#/details/' + id);
+                });
+            }
+        })
+        .catch(e => console.log(e));
     }
 }
