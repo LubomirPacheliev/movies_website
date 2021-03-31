@@ -30,11 +30,16 @@ export default {
         .catch(e => console.log(e));
     },
     getEdit: function(ctx) {
+        const id = ctx.params.id;
         auth.setHeader(ctx);
-        ctx.loadPartials(commonPartial).partial('./view/movies/edit.hbs');
+        get(id)
+        .then(res => {
+            ctx.currMovie = res.data();
+            ctx.loadPartials(commonPartial).partial('./view/movies/edit.hbs');
+        })
+        .catch(e => console.log(e));
     },
     postEdit: function(ctx) {
-        
-        
+        const id = ctx.params.id;
     }
 }

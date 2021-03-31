@@ -3,7 +3,7 @@
     <h1>Edit Movie</h1>
     <div class="form-group">
         <label for="title">Movie Title</label>
-        <input type="text" class="form-control" placeholder="Movie Title" value="" name="title">
+        <input type="text" class="form-control" placeholder="Movie Title" value="{{currMovie.title}}" name="title">
     </div>
     <div class="form-group">
         <label for="description">Movie Description</label>
@@ -11,7 +11,7 @@
     </div>
     <div class="form-group">
         <label for="imageUrl">Image url</label>
-        <input type="text" class="form-control" placeholder="Image Url" value="" name="imageUrl">
+        <input type="text" class="form-control" placeholder="Image Url" value="{{currMovie.imageURL}}" name="imageUrl">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
