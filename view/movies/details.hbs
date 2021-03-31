@@ -11,7 +11,7 @@
             <p>{{currMovie.description}}</p>
             {{#if isCreator}}
             <a class="btn btn-danger" href="#/details/{{params.id}}">Delete</a>
-            <a class="btn btn-warning" href="#/edit/{{paarams.id}}">Edit</a>
+            <a class="btn btn-warning" href="#/edit/{{params.id}}">Edit</a>
             {{else}}
             <a class="btn btn-primary" href="#/details/{{params.id}}">Like</a>
             <span class="enrolled-span">Liked {{currMovie.likes}}</span>
