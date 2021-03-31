@@ -8,7 +8,7 @@ export default {
     },
     postAdd: function(ctx) {
         const {title, description, imageURL} = ctx.params;
-        const [creator, likes] = [sessionStorage.getItem('user'), {}]; 
+        const [creator, likes] = [sessionStorage.getItem('user'), []]; 
         create({title, description, imageURL, creator, likes})
         .then(() => {
             ctx.redirect('#/home');

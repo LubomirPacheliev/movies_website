@@ -14,8 +14,8 @@
             <a class="btn btn-warning" href="#/edit/{{params.id}}">Edit</a>
             {{else}}
             <a class="btn btn-primary" href="#/details/{{params.id}}">Like</a>
-            <span class="enrolled-span">Liked {{currMovie.likes}}</span>
             {{/if}}
+            <span class="enrolled-span">Liked: {{currMovie.likes.length}}</span>
         </div>
     </div>
 </div>
