@@ -1,5 +1,6 @@
 import { create, get } from '../models/events.js';
 import auth from './auth.js';
+import common from './common.js';
 import commonPartial from './partials.js';
 export default {
     getAdd: function(ctx) {
@@ -27,5 +28,13 @@ export default {
             ctx.loadPartials(commonPartial).partial('./view/movies/details.hbs');
         })
         .catch(e => console.log(e));
+    },
+    getEdit: function(ctx) {
+        auth.setHeader(ctx);
+        ctx.loadPartials(commonPartial).partial('./view/movies/edit.hbs');
+    },
+    postEdit: function(ctx) {
+        
+        
     }
 }

@@ -12,10 +12,12 @@ import movies from './controllers/movies.js';
         this.get('#/login', user.getLogin);
         this.get('#/add', movies.getAdd);
         this.get('#/details/:id', movies.getDetails);
+        this.get('#/edit/:id', movies.getEdit);
     
         this.post('#/register', user.postRegister);
         this.post('#/login', user.postLogin);
         this.post('#/add', movies.postAdd);
+        this.post('#/edit/:id', movies.postEdit);
     }); 
     app.run('#/home');
 })();
