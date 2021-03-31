@@ -1,6 +1,5 @@
-import { create, get, update } from '../models/events.js';
+import { create, get, update, close } from '../models/events.js';
 import auth from './auth.js';
-import common from './common.js';
 import commonPartial from './partials.js';
 export default {
     getAdd: function(ctx) {
@@ -43,6 +42,12 @@ export default {
         const id = ctx.params.id;
         const {title, description, imageURL} = ctx.params;
         update(id, {title, description, imageURL})
+        .then(() => ctx.redirect('#/home'))
+        .catch(e => console.log(e));
+    },
+    getDelete: function(ctx) {
+        const id = ctx.params.id;
+        close(id)
         .then(() => ctx.redirect('#/home'))
         .catch(e => console.log(e));
     }

@@ -13,6 +13,7 @@ import movies from './controllers/movies.js';
         this.get('#/add', movies.getAdd);
         this.get('#/details/:id', movies.getDetails);
         this.get('#/edit/:id', movies.getEdit);
+        this.get('#/delete/:id', movies.getDelete);
     
         this.post('#/register', user.postRegister);
         this.post('#/login', user.postLogin);
